@@ -59,9 +59,9 @@ class CoursesClient(APIClient):
         :param request: Словарь с title, maxScore, minScore, description, estimatedTime,
         previewFileId, createdByUserId.
         :return: Ответ от сервера в виде объекта httpx.Response
-
-        return self.post("/api/v1/courses",json = request)
         """
+        return self.post("/api/v1/courses",json = request)
+
     def update_course_api(self, course_id: str, request:UpdateCourseRequestDict) ->Response:
         """
         Метод обновления курса.
