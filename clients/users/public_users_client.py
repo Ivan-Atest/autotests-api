@@ -26,4 +26,3 @@ class PublicUsersClient(APIClient):
         """
         return self.post("api/v1/users", json = request)
 
-
