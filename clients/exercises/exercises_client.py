@@ -65,11 +65,11 @@ class ExercisesClient(APIClient):
 
     def get_exercises(self, query: GetExercisesQuerySchema) -> GetExercisesResponseSchema:
         response = self.get_exercises_api(query)
-        return response.json()
+        return GetExercisesResponseSchema.model_validate_json(response.text)
 
     def get_exercise(self, exercise_id: str) -> GetExerciseResponseSchema:
         response = self.get_exercise_api(exercise_id)
-        return response.json()
+        return GetExerciseResponseSchema.model_validate_json(response.text)
 
     def create_exercise(self, request: CreateExerciseRequestSchema) -> CreateExerciseResponseSchema:
         response = self.create_exercise_api(request)
@@ -77,7 +77,7 @@ class ExercisesClient(APIClient):
 
     def update_exercise(self, exercise_id: str, request: UpdateExerciseRequestSchema) -> UpdateExerciseResponseSchema:
         response = self.update_exercise_api(exercise_id,request)
-        return response.json()
+        return UpdateExerciseResponseSchema.model_validate_json(response.text)
 
 def get_exercises_client(user: AuthenticationUserSchema) -> ExercisesClient:
     """
